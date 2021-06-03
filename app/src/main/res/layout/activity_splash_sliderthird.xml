@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:background="@color/whiteColor"
+              android:gravity="center"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Let's begin"
+            android:gravity="center"
+            android:textColor="#696969"
+            android:textSize="44sp"
+            android:textStyle="bold"
+            android:layout_marginTop="4dp"
+    />
+    <ImageView
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_menu_gallery"
+            android:background="@null"
+            android:fitsSystemWindows="true"
+    />
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/the_cheerful_mind_perseveres_and_the_strong_mind_hews_its_way_through_a_thousand_difficulties"
+            android:gravity="center"
+            android:textColor="#39c68d"
+            android:textStyle="bold"
+            android:layout_marginTop="4dp"
+    />
+    />
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/swami"
+            android:gravity="center"
+            android:textColor="#696969"
+            android:fontFamily="sans-serif-medium"
+            android:layout_marginTop="4dp"
+    />
+
+</LinearLayout>

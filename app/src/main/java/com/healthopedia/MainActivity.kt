@@ -1,18 +1,26 @@
 package com.healthopedia
 
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
+import android.view.*
+import android.widget.TextView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import androidx.core.view.GravityCompat
 import androidx.appcompat.app.ActionBarDrawerToggle
-import android.view.MenuItem
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import android.view.Menu
+import kotlinx.android.synthetic.main.activity_splash.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+
+    private lateinit var splashActivity: SplashActivity
+    private lateinit var slidecheck: Array<TextView?>
+    private lateinit var layouts: IntArray
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,10 +41,37 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         )
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
-
+        statusbarTransparent()
         navView.setNavigationItemSelectedListener(this)
+
+         btn_start.setOnClickListener{
+
+         }
+        btn_skip.setOnClickListener{
+
+        }
+
+        layouts= intArrayOf(R.layout.activity_splash_sliderone,R.layout.activity_splash_slidersecond,
+            R.layout.activity_splash_sliderthird)
+        splashActivity= SplashActivity(layouts,applicationContext)
+        viewScroll.adapter= splashActivity
+
     }
 
+    private fun setDots(page:Int)
+    {
+        layout1.removeAllViews()
+        slidecheck=arrayofNulls(layouts.size)
+
+    }
+    private fun statusbarTransparent(){
+        if(Build.VERSION.SDK_INT>=21){
+            window.decorView.systemUiVisibility= View.SYSTEM_UI_FLAG_LAYOUT_STABLE or  View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+            val window=window
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.statusBarColor= Color.TRANSPARENT
+        }
+    }
     override fun onBackPressed() {
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -61,6 +96,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             else -> super.onOptionsItemSelected(item)
         }
     }
+
+
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
